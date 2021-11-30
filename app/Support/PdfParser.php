@@ -35,7 +35,19 @@ class PdfParser
     public function process(): void
     {
         $pdf = $this->parser->parseFile($this->file);
+        $details  = $pdf->getDetails();
+
+// Loop over each property to extract values (string or array).
+        foreach ($details as $property => $value) {
+            if (is_array($value)) {
+                $value = implode(', ', $value);
+            }
+            echo $property . ' => ' . $value . "\n";
+        }
+
         $this->pages = $pdf->getPages();
+
+        //dd($pdf->getText());
 
         $this->parseGameInformation();
     }
@@ -45,8 +57,28 @@ class PdfParser
      */
     private function parseGameInformation(): void
     {
-        $page1 = Arr::get($this->pages, 0);
-        $textArray = $page1->getTextArray();
+        $page1 = Arr::get($this->pages, 1);
+
+        $details  = $page1->getDetails();
+
+        // Loop over each property to extract values (string or array).
+        foreach ($details as $property => $value) {
+            if (is_array($value)) {
+                $value = implode(', ', $value);
+            }
+            echo $property . ' => ' . $value . "\n";
+        }
+
+        die();
+
+        $textArray = $page1->getText();
+        $textArray = nl2br($textArray);
+        echo $textArray;
+        dd($textArray);
+
+        $textArray = implode(["<br />"], $textArray);
+
+        dd($textArray);
 
         $gamePair = explode('vs.', $textArray[3]);
 

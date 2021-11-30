@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('test', function () {
-    $parser = new PdfParser('storage/test.pdf');
+    $parser = new PdfParser('storage/6151e57a90b7f5728d37a866_STATS_FGHD21FI.pdf');
     $parser->process();
 
     $game = $parser->getGame();
