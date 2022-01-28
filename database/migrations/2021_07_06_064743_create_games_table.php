@@ -15,11 +15,13 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('home_team')->nullable();
-            $table->string('guest_team')->nullable();
+            $table->unsignedBigInteger('home_team_id')->nullable();
+            $table->foreign('home_team_id')->references('id')->on('teams')->nullOnDelete();
+            $table->unsignedBigInteger('guest_team_id')->nullable();
+            $table->foreign('guest_team_id')->references('id')->on('teams')->nullOnDelete();
             $table->date('date')->default(null)->nullable();
-            $table->string('city')->nullable();
-            $table->string('stadium')->nullable();
+            $table->unsignedBigInteger('stadium_id')->nullable();
+            $table->foreign('stadium_id')->references('id')->on('stadia')->nullOnDelete();
             $table->integer('attendance')->nullable();
             $table->integer('score_home')->nullable();
             $table->integer('score_guest')->nullable();

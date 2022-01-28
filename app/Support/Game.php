@@ -2,19 +2,21 @@
 
 namespace App\Support;
 
+use App\Models\Stadium;
+use App\Models\Team;
 use Illuminate\Support\Carbon;
 
 class Game
 {
     /**
-     * @var string
+     * @var Team
      */
-    private $homeTeam = "";
+    private $homeTeam;
 
     /**
-     * @var string
+     * @var Team
      */
-    private $guestTeam = "";
+    private $guestTeam;
 
     /**
      * @var \Illuminate\Support\Carbon
@@ -22,14 +24,9 @@ class Game
     private $date;
 
     /**
-     * @var string
+     * @var Stadium
      */
-    private $city = "";
-
-    /**
-     * @var string
-     */
-    private $stadium = "";
+    private $stadium;
 
     /**
      * @var int
@@ -47,33 +44,33 @@ class Game
     private $scoreGuest = 0;
 
     /**
-     * @return string
+     * @return Team
      */
-    public function getHomeTeam(): string
+    public function getHomeTeam(): Team
     {
         return $this->homeTeam;
     }
 
     /**
-     * @param string $homeTeam
+     * @param Team $homeTeam
      */
-    public function setHomeTeam(string $homeTeam): void
+    public function setHomeTeam(Team $homeTeam): void
     {
         $this->homeTeam = $homeTeam;
     }
 
     /**
-     * @return string
+     * @return Team
      */
-    public function getGuestTeam(): string
+    public function getGuestTeam(): Team
     {
         return $this->guestTeam;
     }
 
     /**
-     * @param string $guestTeam
+     * @param Team $guestTeam
      */
-    public function setGuestTeam(string $guestTeam): void
+    public function setGuestTeam(Team $guestTeam): void
     {
         $this->guestTeam = $guestTeam;
     }
@@ -95,33 +92,17 @@ class Game
     }
 
     /**
-     * @return string
+     * @return Stadium
      */
-    public function getCity(): string
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param string $city
-     */
-    public function setCity(string $city): void
-    {
-        $this->city = $city;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStadium(): string
+    public function getStadium(): Stadium
     {
         return $this->stadium;
     }
 
     /**
-     * @param string $stadium
+     * @param Stadium $stadium
      */
-    public function setStadium(string $stadium): void
+    public function setStadium(Stadium $stadium): void
     {
         $this->stadium = $stadium;
     }

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class TeamStatistic extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

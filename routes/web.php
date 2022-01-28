@@ -24,20 +24,4 @@ Route::get('/', function () {
 Route::get('test', function () {
     $parser = new PdfParser('storage/test.pdf');
     $parser->process();
-
-    $game = $parser->getGame();
-
-    Game::updateOrCreate([
-        'home_team'  => $game->getHomeTeam(),
-        'guest_team' => $game->getGuestTeam(),
-    ], [
-        'home_team'   => $game->getHomeTeam(),
-        'guest_team'  => $game->getGuestTeam(),
-        'date'        => $game->getDate(),
-        'city'        => $game->getCity(),
-        'stadium'     => $game->getStadium(),
-        'attendance'  => $game->getAttendance(),
-        'score_home'  => $game->getScoreHome(),
-        'score_guest' => $game->getScoreGuest(),
-    ]);
 });
